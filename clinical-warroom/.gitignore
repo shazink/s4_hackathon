@@ -44,3 +44,12 @@ ENV/
 # OS
 .DS_Store
 Thumbs.db
+
+# Keys and Secrets
+*.pem
+*.key
+*.keystore
+*.p12
+*.pfx
+secrets.json
+service_account.json

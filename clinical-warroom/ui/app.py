@@ -32,111 +32,133 @@ st.markdown("""
 <style>
     /* Hide Streamlit default header, menu, and footer */
     #MainMenu {visibility: hidden;}
-    header {visibility: hidden;}
     footer {visibility: hidden;}
     
-    /* Remove top padding to make room for custom header */
+    /* Remove top padding */
     .block-container {
-        padding-top: 1rem;
+        padding-top: 2rem;
     }
     
+    /* Main Background - Light Blue */
     .stApp {
-        background-color: #0a1628;
+        background-color: #e0f2fe; /* Light Blue */
     }
     
-    /* Professional header styling */
+    /* Headers - Black & Orange Accent */
     h1 {
-        color: #60a5fa !important;
-        font-weight: 600 !important;
-        letter-spacing: -0.5px !important;
+        color: #000000 !important;
+        font-weight: 800 !important;
+        text-shadow: 2px 2px 0px #fdba74; /* Orange Shadow */
     }
     
-    h2, h3 {
-        color: #93c5fd !important;
-        font-weight: 500 !important;
+    h2, h3, h4 {
+        color: #ea580c !important; /* Burnt Orange */
+        font-weight: 700 !important;
+    }
+    
+    /* Text - Black */
+    p, li, span, div {
+        color: #000000;
+        font-weight: 500;
+    }
+    
+    /* Sidebar styling - White with Orange/Red borders */
+    [data-testid="stSidebar"] {
+        background-color: #ffffff;
+        border-right: 3px solid #f97316; /* Orange */
     }
     
     /* Chat message styling */
     .chat-message {
-        padding: 16px 20px;
-        border-radius: 8px;
-        margin: 12px 0;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        padding: 18px 24px;
+        border-radius: 16px;
+        margin: 16px 0;
+        box-shadow: 4px 4px 0px rgba(0,0,0,0.1); /* Hard shadow */
+        color: #000000;
+        border: 2px solid #000000;
+    }
+    
+    .chat-message:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 6px 6px 0px rgba(0,0,0,0.1);
     }
     
     .user-message {
-        background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
-        color: white;
-        margin-left: 15%;
-        border-left: 4px solid #3b82f6;
+        background: #fdba74; /* Orange */
+        color: #000000;
+        margin-left: 10%;
     }
     
     .assistant-message {
-        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-        border: 1px solid #334155;
-        border-left: 4px solid #60a5fa;
-        color: #e2e8f0;
+        background: #ffffff;
+        border: 2px solid #000000;
+        border-left: 8px solid #ef4444; /* Red */
+        color: #000000;
+        margin-right: 10%;
     }
     
-    /* Risk badges - medical colors */
+    /* Risk badges - Pop style */
     .risk-badge {
-        padding: 6px 14px;
-        border-radius: 6px;
+        padding: 6px 12px;
+        border-radius: 8px;
         font-size: 0.8em;
-        font-weight: 600;
+        font-weight: 800;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
-        display: inline-block;
+        border: 2px solid #000000;
     }
     
     .risk-low { 
-        background: #064e3b; 
-        color: #6ee7b7; 
-        border: 2px solid #10b981; 
+        background: #6ee7b7; /* Green */
+        color: #000000; 
     }
     .risk-moderate { 
-        background: #713f12; 
-        color: #fcd34d; 
-        border: 2px solid #f59e0b; 
+        background: #fdba74; /* Orange */
+        color: #000000; 
     }
     .risk-high { 
-        background: #7f1d1d; 
-        color: #fca5a5; 
-        border: 2px solid #ef4444; 
+        background: #fca5a5; /* Red */
+        color: #000000; 
     }
     .risk-critical { 
-        background: #450a0a; 
-        color: #fca5a5; 
-        border: 2px solid #dc2626;
-        animation: pulse 2s ease-in-out infinite;
+        background: #ef4444; 
+        color: #ffffff; 
+        animation: pulse 1s infinite alternate;
     }
     
     @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.7; }
+        from { transform: scale(1); }
+        to { transform: scale(1.05); }
     }
     
-    /* Sidebar styling */
-    [data-testid="stSidebar"] {
-        background-color: #0f172a;
-        border-right: 1px solid #1e293b;
-    }
-    
-    /* Button styling */
+    /* Button styling - Red/Orange Gradient */
     .stButton>button {
-        background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-        color: white;
-        border: none;
-        border-radius: 6px;
-        font-weight: 500;
-        padding: 0.5rem 1.5rem;
-        transition: all 0.3s;
+        background: linear-gradient(45deg, #f97316, #ef4444);
+        color: #ffffff !important;
+        border: 2px solid #000000;
+        border-radius: 8px;
+        font-weight: 800;
+        padding: 0.6rem 1.6rem;
+        box-shadow: 3px 3px 0px #000000;
+        transition: all 0.1s ease;
     }
     
     .stButton>button:hover {
-        background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
-        transform: translateY(-1px);
+        transform: translate(-1px, -1px);
+        box-shadow: 5px 5px 0px #000000;
+    }
+    
+    .stButton>button:active {
+        transform: translate(2px, 2px);
+        box-shadow: 1px 1px 0px #000000;
+    }
+    
+    /* Input fields */
+    .stTextInput>div>div>input {
+        color: #000000;
+        background-color: #ffffff;
+        border: 2px solid #000000;
+        border-radius: 8px;
+        box-shadow: 3px 3px 0px #bae6fd; /* Light Blue shadow */
     }
 </style>
 """, unsafe_allow_html=True)
@@ -144,20 +166,12 @@ st.markdown("""
 
 def render_header():
     """Render the professional medical header."""
-    col1, col2, col3 = st.columns([6, 2, 1])
-    with col1:
-        st.markdown("""
-        <div style="padding: 10px 0;">
-            <h1 style="margin: 0; color: #60a5fa; font-size: 2.2em;">🏥 Clinical Decision Support Platform</h1>
-            <p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.95em;">AI-Powered Multi-Agent Clinical Analysis System</p>
-        </div>
-        """, unsafe_allow_html=True)
-    with col2:
-        st.markdown("""
-        <div style="padding: 20px 0; text-align: right;">
-            <span style="color: #10b981; font-weight: 600;">● SYSTEM ONLINE</span>
-        </div>
-        """, unsafe_allow_html=True)
+    st.markdown("""
+    <div style="padding: 10px 0;">
+        <h1 style="margin: 0; color: #1e40af; font-size: 2.5em;">🏥 Clinical Decision Support Platform</h1>
+        <p style="margin: 5px 0 0 0; color: #64748b; font-size: 1.1em; font-weight: 500;">AI-Powered Multi-Agent Clinical Analysis System</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 
 def render_upload_patient_tab():
@@ -267,17 +281,21 @@ def render_chat_interface():
     engine = get_chat_engine()
     
     # Initialize chat history
+    # Initialize session state
     if "messages" not in st.session_state:
         st.session_state.messages = []
     if "selected_patient" not in st.session_state:
         st.session_state.selected_patient = None
     
-    # Patient selector
+    with st.sidebar:
+        st.markdown("---")
+
+    # Patient Selector (Main Page)
     patients = store.list_patients()
     if not patients:
         st.warning("⚠️ No patients in database. Add a patient first.")
         return
-    
+        
     patient_options = {p['patient_id']: f"{p['name']} ({p['patient_id']})" for p in patients}
     
     selected_id = st.selectbox(
@@ -299,26 +317,31 @@ def render_chat_interface():
     
     st.markdown("---")
     
-    # Display chat history
-    for msg in st.session_state.messages:
-        if msg["role"] == "user":
-            st.markdown(f"""
-            <div class="chat-message user-message">
-                <strong>👨‍⚕️ Doctor:</strong> {msg["content"]}
-            </div>
-            """, unsafe_allow_html=True)
-        else:
-            response = msg.get("response")
-            if response:
-                render_chat_response(response)
+    # --- MAIN CHAT AREA ---
+    if not st.session_state.selected_patient:
+        st.info("👆 Please select a patient above to begin analysis.")
+        return
+        
+    patient = st.session_state.selected_patient
+    
+    # Main chat container
+    chat_container = st.container()
+    
+    with chat_container:
+        # Display chat messages
+        for msg in st.session_state.messages:
+            if msg["role"] == "user":
+                st.markdown(f"""
+                <div class="chat-message user-message">
+                    <strong>👨‍⚕️ Doctor</strong><br>
+                    {msg["content"]}
+                </div>
+                """, unsafe_allow_html=True)
+            else:
+                render_chat_response(msg["response"])
     
     # Chat input
-    st.markdown("---")
-    
-    # User input
-    user_query = st.chat_input("Ask about the patient...")
-    
-    if user_query and patient:
+    if user_query := st.chat_input(f"Assess {patient.name}..."):
         process_query(user_query, patient, engine)
 
 
@@ -355,7 +378,6 @@ def render_chat_response(response):
     <div class="chat-message assistant-message">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
             <strong>🤖 Clinical War Room</strong>
-            <span class="risk-badge {risk_class}">{response.risk_level.upper()} RISK</span>
         </div>
         <div style="margin-bottom: 12px;">{response.answer}</div>
     </div>
@@ -420,7 +442,7 @@ def render_debate_section(debate_rounds, treatment_urgency):
                         <div style="font-weight: bold; color: {color}; margin-bottom: 8px;">
                             {name}
                         </div>
-                        <div style="color: #e5e7eb; font-size: 0.95em;">
+                        <div style="color: #334155; font-size: 1em; line-height: 1.5;">
                             {agent_message}
                         </div>
                     </div>
@@ -450,7 +472,7 @@ def render_debate_section(debate_rounds, treatment_urgency):
         <div style="font-size: 1.5em; font-weight: bold; color: {color}; margin-bottom: 8px;">
             {label}
         </div>
-        <div style="color: #9ca3af; font-size: 0.9em;">
+        <div style="color: #64748b; font-size: 0.95em; font-weight: 500;">
             Consensus reached through multi-agent deliberation
         </div>
     </div>
@@ -488,7 +510,7 @@ def main():
     render_header()
     
     # Professional mode selector
-    st.sidebar.markdown("## ⚙️ System Controls")
+    # Professional mode selector
     mode = st.sidebar.radio(
         "Select Mode:",
         options=["chat", "upload"],
@@ -508,12 +530,7 @@ def main():
     except:
         pass
     
-    st.sidebar.markdown("---")
-    st.sidebar.markdown("### 📊 System Status")
-    st.sidebar.caption("• AI Engine: Groq API (Llama 3.3)")
-    st.sidebar.caption("• Vector DB: ChromaDB")
-    st.sidebar.caption("• Agents: 5 Analysis + 3 Debate")
-    st.sidebar.caption("• Decision: Confidence-Based")
+
     
     if mode == "chat":
         render_chat_interface()

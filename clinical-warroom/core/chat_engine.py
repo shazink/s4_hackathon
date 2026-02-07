@@ -287,47 +287,60 @@ Answer with ONLY "YES" or "NO"."""
         }
         
         # Proponent Agent (pushes for action)
-        proponent_prompt = f"""You are the PROPONENT agent in a medical debate. Your role is to advocate for decisive action when appropriate.
-
+        proponent_prompt = f"""You are the PROPONENT agent in a medical debate. Your role is to CONSISTENTLY advocate for action based on clinical indicators.
+        
 Patient Context: {patient_context[:500]}
 Question: {question}
 Current Assessment: {risk_level} risk, {confidence:.0%} confidence
 
-Argue for immediate treatment if medically justified. Be bold but medically sound. 2-3 sentences."""
+If there are ANY signs of acute distress, instability, or high risk factors, you MUST argue for IMMEDIATE intervention.
+If the patient is stable but has risk factors, argue for ESCALATION.
+Only accept monitoring if the patient is completely healthy.
+
+Argue for the highest justifiable level of care. Be bold and consistent. 2-3 sentences."""
         
         proponent_response = self.llm_client.generate(
-            system_prompt="You are an action-oriented medical advocate.",
-            user_prompt=proponent_prompt
+            system_prompt="You are an action-oriented medical advocate. You prioritize safety through action.",
+            user_prompt=proponent_prompt,
+            temperature=0.0
         )
         round_1["agents"]["proponent"] = proponent_response.content
         
         # Skeptic Agent (advocates caution)
-        skeptic_prompt = f"""You are the SKEPTIC agent in a medical debate. Your role is to question assumptions and advocate for caution.
+        skeptic_prompt = f"""You are the SKEPTIC agent in a medical debate. Your role is to CONSISTENTLY question the need for aggressive action.
 
 Patient Context: {patient_context[:500]}
 Question: {question}
 Current Assessment: {risk_level} risk, {confidence:.0%} confidence
 
-Challenge any rush to treatment. Highlight uncertainties and risks. 2-3 sentences."""
+Point out mitigating factors, stability signs, or lack of acute symptoms.
+Argue against over-treatment. Suggest monitoring or non-invasive steps first unless there is a clear life threat.
+
+Be cautious and conservative. 2-3 sentences."""
         
         skeptic_response = self.llm_client.generate(
-            system_prompt="You are a cautious medical reviewer.",
-            user_prompt=skeptic_prompt
+            system_prompt="You are a cautious medical reviewer. You prioritize safety through avoid unnecessary intervention.",
+            user_prompt=skeptic_prompt,
+            temperature=0.0
         )
         round_1["agents"]["skeptic"] = skeptic_response.content
         
         # Mediator Agent (balanced)
-        mediator_prompt = f"""You are the MEDIATOR agent in a medical debate. Your role is to find balanced solutions.
+        mediator_prompt = f"""You are the MEDIATOR agent in a medical debate. Your role is to find the CLINICALLY APPROPRIATE balance.
 
 Patient Context: {patient_context[:500]}
 Question: {question}
 Current Assessment: {risk_level} risk, {confidence:.0%} confidence
 
-Weigh both action and caution. Seek middle ground. 2-3 sentences."""
+Weigh the Proponent's call for action against the Skeptic's caution.
+Your goal is accuracy, not compromise. If the patient is critical, side with the Proponent. If healthy, side with the Skeptic.
+
+Provide a balanced clinical view. 2-3 sentences."""
         
         mediator_response = self.llm_client.generate(
-            system_prompt="You are a balanced medical coordinator.",
-            user_prompt=mediator_prompt
+            system_prompt="You are a balanced medical coordinator. You prioritize clinical accuracy.",
+            user_prompt=mediator_prompt,
+            temperature=0.0
         )
         round_1["agents"]["mediator"] = mediator_response.content
         
@@ -343,22 +356,24 @@ Weigh both action and caution. Seek middle ground. 2-3 sentences."""
         # Skeptic challenges Proponent
         challenge_prompt = f"""The PROPONENT said: "{proponent_response.content}"
 
-As the SKEPTIC, challenge this position. Point out what could go wrong. 1-2 sentences."""
+As the SKEPTIC, challenge this specific point. What is the risk of following this advice? 1-2 sentences."""
         
         challenge_response = self.llm_client.generate(
             system_prompt="You are challenging overly optimistic views.",
-            user_prompt=challenge_prompt
+            user_prompt=challenge_prompt,
+            temperature=0.0
         )
         round_2["agents"]["skeptic"] = challenge_response.content
         
         # Proponent defends
         defense_prompt = f"""The SKEPTIC challenged you: "{challenge_response.content}"
 
-As the PROPONENT, defend your position. Address the concern. 1-2 sentences."""
+As the PROPONENT, defend your position. Why is inaction dangerous here? 1-2 sentences."""
         
         defense_response = self.llm_client.generate(
             system_prompt="You are defending decisive medical action.",
-            user_prompt=defense_prompt
+            user_prompt=defense_prompt,
+            temperature=0.0
         )
         round_2["agents"]["proponent"] = defense_response.content
         
@@ -366,11 +381,12 @@ As the PROPONENT, defend your position. Address the concern. 1-2 sentences."""
         mediation_prompt = f"""PROPONENT: "{defense_response.content}"
 SKEPTIC: "{challenge_response.content}"
 
-As the MEDIATOR, what question would help resolve this? 1 sentence."""
+As the MEDIATOR, ask ONE critical question to resolve the urgency level. 1 sentence."""
         
         mediation_response = self.llm_client.generate(
             system_prompt="You are finding common ground.",
-            user_prompt=mediation_prompt
+            user_prompt=mediation_prompt,
+            temperature=0.0
         )
         round_2["agents"]["mediator"] = mediation_response.content
         
@@ -386,19 +402,22 @@ As the MEDIATOR, what question would help resolve this? 1 sentence."""
         # Mediator synthesizes
         synthesis_prompt = f"""After debate, as MEDIATOR, make final recommendation on treatment urgency.
 
-Choose ONE:
-- IMMEDIATE TREATMENT NEEDED
-- ESCALATE TO SPECIALIST
-- CONTINUE MONITORING
+Patient Context: {patient_context[:500]}
+Current Assessment: {risk_level} risk
 
-Risk level: {risk_level}
-Confidence: {confidence:.0%}
+CRITERIA FOR DECISION:
+1. IMMEDIATE TREATMENT NEEDED: Use ONLY if acute symptoms (chest pain, stroke signs, severe trauma), unstable vitals, or high risk flags are present.
+2. ESCALATE TO SPECIALIST: Use if stable but complex, chronic conditions worsening, or moderate risk factors needing expert review.
+3. CONTINUE MONITORING: Use if patient is healthy, asymptomatic, or conditions are well-controlled with normal vitals.
+
+Based on the patient data above, choose ONE of these exact phrases as your conclusion.
 
 Answer with decision + brief reason (1-2 sentences)."""
         
         synthesis_response = self.llm_client.generate(
-            system_prompt="You are making the final medical decision.",
-            user_prompt=synthesis_prompt
+            system_prompt="You are making the final medical decision. Be decisive and consistent.",
+            user_prompt=synthesis_prompt,
+            temperature=0.0
         )
         round_3["agents"]["mediator"] = synthesis_response.content
         
@@ -418,7 +437,8 @@ As PROPONENT, do you agree? Vote: AGREE or DISAGREE. 1 sentence."""
         
         vote_pro = self.llm_client.generate(
             system_prompt="You are casting your final vote.",
-            user_prompt=vote_prompt_pro
+            user_prompt=vote_prompt_pro,
+            temperature=0.0
         )
         round_3["agents"]["proponent"] = f"Vote: {vote_pro.content}"
         
@@ -428,7 +448,8 @@ As SKEPTIC, do you agree? Vote: AGREE or DISAGREE. 1 sentence."""
         
         vote_skep = self.llm_client.generate(
             system_prompt="You are casting your final vote.",
-            user_prompt=vote_prompt_skep
+            user_prompt=vote_prompt_skep,
+            temperature=0.0
         )
         round_3["agents"]["skeptic"] = f"Vote: {vote_skep.content}"
         
