@@ -1,0 +1,119 @@
+Patient Name: Emily Thompson
+Age: 45
+Gender: Female
+Patient ID: LOWRISK-001
+
+MEDICAL HISTORY:
+==================
+
+Chief Complaint: Annual preventive health screening - feeling well
+
+Vital Signs (Recent):
+- Blood Pressure: 112/72 mmHg (Optimal)
+- Heart Rate: 62 bpm (Normal)
+- Temperature: 98.2°F (Normal)
+- Respiratory Rate: 14 breaths/min (Normal)
+- BMI: 23.1 (Healthy weight)
+- SpO2: 99% on room air
+
+Current Medications:
+- Multivitamin daily
+- Vitamin D 2000 IU daily
+
+Allergies:
+- No known drug allergies (NKDA)
+
+Past Medical History:
+- No chronic medical conditions
+- Appendectomy at age 18 (uncomplicated)
+- Two normal pregnancies (ages 28 and 31)
+- No hospitalizations in past 10 years
+
+Family History:
+- Father: Healthy at age 72
+- Mother: Hypertension at age 68 (well-controlled)
+- One sibling: Healthy
+- No family history of cancer, heart disease, or diabetes before age 60
+
+Social History:
+- Never smoked
+- Occasional social drinker (2-3 times/month, 1 drink)
+- Very active lifestyle: yoga 4x/week, hiking on weekends
+- Elementary school teacher
+- Married, 2 children (ages 14 and 17)
+- Excellent sleep quality (8 hours/night)
+- Low stress levels
+- Balanced diet, mostly plant-based
+
+Review of Systems:
+- Cardiovascular: No chest pain, palpitations, or edema
+- Respiratory: No cough, wheezing, or shortness of breath
+- Gastrointestinal: Normal bowel habits, no pain
+- Genitourinary: Regular menstrual cycles, no issues
+- Neurological: No headaches, dizziness, or memory issues
+- Musculoskeletal: Full range of motion, no pain
+- Dermatological: No concerning lesions
+- General: Excellent energy, feels very healthy
+
+Recent Lab Work (2 months ago):
+- Complete Blood Count: All normal
+- Comprehensive Metabolic Panel: All normal
+- Lipid Panel:
+  * Total Cholesterol: 165 mg/dL (Optimal)
+  * LDL: 88 mg/dL (Optimal)
+  * HDL: 72 mg/dL (Excellent)
+  * Triglycerides: 62 mg/dL (Optimal)
+- HbA1c: 5.1% (Excellent)
+- Thyroid Function (TSH): 2.3 mIU/L (Normal)
+- Vitamin D: 45 ng/mL (Sufficient)
+
+Recent Screening Tests:
+- Mammogram (last year): Normal, BIRADS 1
+- Pap smear (6 months ago): Normal
+- Blood pressure screening: Consistently normal
+- Vision screening: 20/20 both eyes
+- Dental checkup (3 months ago): No cavities, excellent hygiene
+
+Physical Examination:
+- General: Well-appearing, healthy female in no distress
+- Vital Signs: All within normal limits
+- HEENT: Normal, no abnormalities
+- Cardiovascular: Regular rate and rhythm, no murmurs, rubs, or gallops
+- Respiratory: Clear lung fields bilaterally, no wheezing
+- Breast: No masses, no lymphadenopathy
+- Abdomen: Soft, non-tender, no organomegaly
+- Extremities: No edema, excellent circulation
+- Skin: No concerning lesions
+- Neurological: Alert, oriented x3, full strength, intact sensation
+
+Assessment:
+Healthy 45-year-old female presenting for routine annual wellness visit. Excellent health maintenance with regular exercise, healthy diet, and good lifestyle choices. No acute or chronic medical issues. All screening tests up to date and normal. Cardiovascular risk factors: none identified.
+
+Plan:
+- Continue current excellent health habits
+- Maintain regular exercise and healthy diet
+- Continue age-appropriate cancer screenings:
+  * Annual mammogram
+  * Pap smear per guidelines (q3 years)
+- Monitor blood pressure annually
+- Lipid panel in 5 years (given excellent values)
+- Next wellness visit in 1 year
+- No medications needed
+- No specialist referrals needed
+- Encourage continued preventive care
+
+Preventive Recommendations:
+- Continue current exercise routine
+- Maintain healthy weight
+- Annual influenza vaccine
+- Tdap booster if due
+- Consider discussing colorectal cancer screening at age 50
+
+Risk Assessment:
+- Cardiovascular Risk: Very Low (Framingham 10-year risk <2%)
+- Cancer Risk: Average (age-appropriate screening)
+- Metabolic Risk: Very Low
+- Fall Risk: Very Low
+- Overall Health Status: Excellent
+
+CLINICAL IMPRESSION: Exceptionally healthy patient with excellent lifestyle habits and no medical concerns. Model of preventive health. Continue current practices and routine monitoring. No interventions needed. Prognosis: Excellent.

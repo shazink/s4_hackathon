@@ -1,0 +1,90 @@
+Patient Name: Robert Martinez
+Age: 58
+Gender: Male
+Patient ID: MODERATE-001
+
+MEDICAL HISTORY:
+==================
+
+Chief Complaint: Follow-up for hypertension and recent fatigue
+
+Vital Signs (Recent):
+- Blood Pressure: 138/88 mmHg (Stage 1 Hypertension)
+- Heart Rate: 76 bpm (Normal)
+- Temperature: 98.6°F (Normal)
+- Respiratory Rate: 16 breaths/min (Normal)
+- BMI: 27.8 (Overweight)
+- SpO2: 97% on room air
+
+Current Medications:
+- Lisinopril 10mg daily (for hypertension)
+- Atorvastatin 20mg daily (for cholesterol)
+- Aspirin 81mg daily (preventive)
+
+Allergies:
+- Penicillin (rash)
+
+Past Medical History:
+- Hypertension (diagnosed 3 years ago, well-controlled on medication)
+- Hyperlipidemia (diagnosed 2 years ago)
+- No diabetes
+- No previous heart attacks or strokes
+
+Family History:
+- Father: Died at age 72 from myocardial infarction
+- Mother: Type 2 diabetes, alive at age 80
+- Brother: Hypertension
+
+Social History:
+- Former smoker (quit 5 years ago, 15 pack-year history)
+- Occasional alcohol (3-4 drinks/week)
+- Sedentary lifestyle, works desk job
+- Married with 2 adult children
+- Reports increased work stress recently
+
+Review of Systems:
+- Cardiovascular: No chest pain, occasional palpitations
+- Respiratory: No significant issues
+- Gastrointestinal: Mild heartburn occasionally
+- Neurological: Reports fatigue for past 2 weeks, no dizziness
+- Musculoskeletal: Mild lower back pain
+- General: Fatigue, stress, some difficulty sleeping
+
+Recent Lab Work (1 month ago):
+- Complete Blood Count: Normal
+- Comprehensive Metabolic Panel: Slightly elevated fasting glucose (108 mg/dL)
+- Lipid Panel:
+  * Total Cholesterol: 195 mg/dL (Borderline high)
+  * LDL: 125 mg/dL (Near optimal)
+  * HDL: 42 mg/dL (Low - concern)
+  * Triglycerides: 160 mg/dL (Borderline high)
+- HbA1c: 5.8% (Prediabetic range)
+- Kidney function: Normal
+
+Physical Examination:
+- General Appearance: Overweight male, appears stated age
+- HEENT: Normal
+- Cardiovascular: Regular rate and rhythm, no murmurs
+- Respiratory: Clear to auscultation
+- Abdomen: Soft, mild central obesity
+- Extremities: No edema, pulses intact
+- Neurological: Alert and oriented
+
+Assessment:
+58-year-old male with controlled hypertension and hyperlipidemia on medication. Recent fatigue and stress. Prediabetic glucose levels noted. Family history significant for cardiovascular disease. Lifestyle factors include sedentary work and history of smoking.
+
+Plan:
+- Continue current medications
+- Lifestyle modifications: increase physical activity, dietary counseling
+- Monitor glucose levels - recheck in 3 months
+- Stress management recommendations
+- Follow-up in 6 weeks
+- Consider medication adjustment if BP remains elevated
+
+Risk Assessment:
+- Cardiovascular Risk: Moderate (family history, prediabetes, low HDL)
+- Fall Risk: Low
+- Metabolic Risk: Moderate (prediabetes)
+- Overall Health Status: Stable but requires monitoring
+
+CLINICAL IMPRESSION: Moderate-risk patient with controllable conditions. Close monitoring and lifestyle modifications recommended. Specialist referral may be needed if glucose control doesn't improve.

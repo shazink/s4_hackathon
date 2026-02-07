@@ -14,9 +14,6 @@ import uuid
 import os
 
 from agents.llm_client import get_llm_client, LLMClient
-from rl.coordinator import RLCoordinator
-from rl.state import RLState
-from rl.environment import Action, ACTION_NAMES
 
 
 @dataclass
@@ -48,12 +45,12 @@ class ChatResponse:
     # Agent deliberation
     agent_messages: List[AgentMessage] = field(default_factory=list)
     
+    # Multi-agent debate
+    debate_rounds: List[Dict[str, Any]] = field(default_factory=list)
+    treatment_urgency: str = ""  # "IMMEDIATE", "ESCALATE", "MONITOR"
+    
     # Risk assessment summary
     risk_factors: List[str] = field(default_factory=list)
-    
-    # RL decision info
-    rl_explanation: str = ""
-    rl_was_overridden: bool = False
     
     timestamp: str = ""
 
@@ -66,8 +63,8 @@ Focus on: diagnosis, symptom analysis, clinical findings.
 Respond in 2-3 sentences with your key observations.""",
     
     "Risk": """You are the Risk Assessment Agent in a clinical decision support system.
-Analyze the patient's fall risk and safety factors.
-Focus on: fall risk score, mobility issues, risk factors.
+Analyze the patient's safety and health risks based on the available data.
+Focus on: mobility issues, safety concerns, potential complications.
 Respond in 2-3 sentences with your risk assessment.""",
     
     "Evidence": """You are the Evidence-Based Medicine Agent in a clinical decision support system.
@@ -89,18 +86,11 @@ Respond in 2-3 sentences about data reliability.""",
 
 class ChatQueryEngine:
     """
-    Fully integrated query engine using real LLM and trained RL.
+    Query engine using real LLM agents for clinical analysis.
     """
     
     def __init__(self):
         self.llm_client = get_llm_client()
-        
-        # Load trained RL policy
-        policy_path = os.path.join(
-            os.path.dirname(__file__), "..", "data", "models", "rl_policy.pkl"
-        )
-        self.rl_coordinator = RLCoordinator(policy_path=policy_path)
-        
         self.using_llm = self.llm_client.is_available
         print(f"ChatQueryEngine initialized: LLM={'available' if self.using_llm else 'mock mode'}")
     
@@ -112,37 +102,35 @@ class ChatQueryEngine:
         patient_name: str,
         gait_data: Optional[Dict[str, float]] = None,
     ) -> ChatResponse:
-        """Process a doctor's query using real agents and RL."""
+        """Process a doctor's query using LLM agents."""
         query_id = f"Q-{uuid.uuid4().hex[:8].upper()}"
         messages: List[AgentMessage] = []
         
-        # Compute fall risk from gait data
-        gait_data = gait_data or {}
-        fall_risk = self._compute_fall_risk(gait_data, patient_context)
+        # Build context for agents (no manual risk calculations)
+        gait_info = ""
+        if gait_data:
+            gait_info = f"""
+Gait Measurements:
+- Stride Length: {gait_data.get('stride_length', 'N/A')} m
+- Gait Speed: {gait_data.get('gait_speed', 'N/A')} m/s
+- Symmetry Index: {gait_data.get('symmetry_index', 'N/A')}
+"""
         
-        # Build context for agents
         context = f"""
 Patient: {patient_name}
 Question: {question}
 
 Medical History:
 {patient_context}
-
-Gait Metrics:
-- Stride Length: {gait_data.get('stride_length', 'N/A')} m
-- Gait Speed: {gait_data.get('gait_speed', 'N/A')} m/s
-- Symmetry Index: {gait_data.get('symmetry_index', 'N/A')}
-- Computed Fall Risk: {fall_risk:.0%}
+{gait_info}
 """
         
         # Run all agents
         agent_confidences = []
-        agent_risks = []
         
         for agent_name, system_prompt in AGENT_PROMPTS.items():
-            opinion, conf, risk = self._run_agent(agent_name, system_prompt, context)
+            opinion, conf = self._run_agent(agent_name, system_prompt, context)
             agent_confidences.append(conf)
-            agent_risks.append(risk if risk else fall_risk)
             
             messages.append(AgentMessage(
                 agent_name=f"{agent_name} Agent",
@@ -150,71 +138,51 @@ Gait Metrics:
                 timestamp=datetime.now().isoformat(),
                 message_type="opinion",
                 confidence=conf,
-                risk_score=risk if risk else fall_risk,
+                risk_score=0.0,
             ))
         
-        # Compute aggregate state for RL
+        # Compute aggregate metrics for decision making
         avg_conf = sum(agent_confidences) / len(agent_confidences)
-        min_conf = min(agent_confidences)
-        max_conf = max(agent_confidences)
-        avg_risk = sum(agent_risks) / len(agent_risks)
-        max_risk = max(agent_risks)
         
-        # Estimate disagreement from confidence spread
-        disagreement = max_conf - min_conf
-        
-        # Data quality based on gait data completeness
-        data_quality = 0.9 if len(gait_data) >= 3 else (0.5 if gait_data else 0.2)
-        
-        # Build RL state
-        rl_state = RLState(
-            avg_confidence=avg_conf,
-            min_confidence=min_conf,
-            max_confidence=max_conf,
-            avg_risk=avg_risk,
-            max_risk=max_risk,
-            disagreement_score=disagreement,
-            data_quality_score=data_quality,
-            vote_execute=0.3 if fall_risk < 0.4 else 0.1,
-            vote_escalate=0.4,
-            vote_refuse=0.2 if fall_risk > 0.7 else 0.1,
-            vote_request_data=0.1 if data_quality > 0.5 else 0.3,
-            has_veto=1.0 if fall_risk > 0.85 else 0.0,
-        )
-        
-        # Get RL decision using trained policy
-        from safety.evaluator import SafetyOutput
-        safety_output = SafetyOutput(
-            allowed=fall_risk < 0.85,
-            triggered_rule=None,
-            forced_action=None,
-            explanation="Safety check passed" if fall_risk < 0.85 else "High risk detected",
-        )
-        
-        rl_result = self.rl_coordinator.decide(rl_state, safety_output)
-        
-        # Add RL decision as final message
-        messages.append(AgentMessage(
-            agent_name="RL Coordinator",
-            message=f"Decision: {rl_result.selected_action}. {rl_result.explanation}",
-            timestamp=datetime.now().isoformat(),
-            message_type="vote",
-            confidence=rl_result.policy_confidence,
-        ))
-        
-        # Determine risk level
-        if fall_risk > 0.75:
-            risk_level = "critical"
-        elif fall_risk > 0.5:
-            risk_level = "high"
-        elif fall_risk > 0.3:
+        # Simple recommendation based purely on agent confidence
+        if avg_conf < 0.5:
+            recommendation = "ESCALATE"
+            explanation = "Low agent confidence - requires expert clinical review"
             risk_level = "moderate"
-        else:
+        elif avg_conf > 0.8:
+            recommendation = "PROCEED WITH CAUTION"
+            explanation = "High agent confidence - agents agree on assessment"
             risk_level = "low"
+        else:
+            recommendation = "REVIEW RECOMMENDED"
+            explanation = "Moderate confidence - clinical oversight advised"
+            risk_level = "moderate"
+        
+        # Determine if question is about treatment urgency/risk
+        should_debate = self._should_run_debate(question)
+        
+        # Run multi-agent debate only if question is about treatment urgency
+        debate_rounds = []
+        treatment_urgency = ""
+        
+        if should_debate:
+            debate_rounds, treatment_urgency = self._run_debate(
+                question, patient_context, messages, avg_conf, risk_level
+            )
+            
+            # Align risk level with treatment urgency for consistency
+            if treatment_urgency == "IMMEDIATE":
+                risk_level = "critical"
+                recommendation = "IMMEDIATE TREATMENT"
+            elif treatment_urgency == "ESCALATE":
+                risk_level = "high"
+                recommendation = "ESCALATE TO SPECIALIST"
+            elif treatment_urgency == "MONITOR":
+                risk_level = "low"
+                recommendation = "CONTINUE MONITORING"
         
         # Generate final answer
-        answer = self._generate_answer(question, patient_context, fall_risk, rl_result.selected_action)
-        risk_factors = self._extract_risk_factors(patient_context, fall_risk)
+        answer = self._generate_answer(question, patient_context, recommendation)
         
         return ChatResponse(
             query_id=query_id,
@@ -222,13 +190,13 @@ Gait Metrics:
             patient_id=patient_id,
             patient_name=patient_name,
             answer=answer,
-            confidence=rl_result.policy_confidence,
+            confidence=avg_conf,
             risk_level=risk_level,
-            recommendation=rl_result.selected_action,
+            recommendation=recommendation,
             agent_messages=messages,
-            risk_factors=risk_factors,
-            rl_explanation=rl_result.explanation,
-            rl_was_overridden=rl_result.was_overridden,
+            debate_rounds=debate_rounds,
+            treatment_urgency=treatment_urgency,
+            risk_factors=[],  # No pre-computed risk factors
             timestamp=datetime.now().isoformat(),
         )
     
@@ -239,53 +207,17 @@ Gait Metrics:
             user_prompt=context,
         )
         
-        # Parse confidence from response or estimate
+        # Use default confidence
         content = response.content
-        confidence = 0.75  # Default
-        risk = None
+        confidence = 0.75  # Default confidence for all agents
         
-        # Try to extract any mentioned percentages
-        import re
-        percent_match = re.search(r'(\d+)%', content)
-        if percent_match:
-            value = int(percent_match.group(1)) / 100
-            if 'risk' in content.lower():
-                risk = min(value, 1.0)
-            elif 'confidence' in content.lower():
-                confidence = min(value, 1.0)
-        
-        return content, confidence, risk
+        return content, confidence
     
-    def _compute_fall_risk(self, gait_data: Dict[str, float], context: str) -> float:
-        """Compute fall risk score deterministically."""
-        base_risk = 0.3
-        
-        if gait_data:
-            stride = gait_data.get("stride_length", 0.7)
-            speed = gait_data.get("gait_speed", 1.0)
-            symmetry = gait_data.get("symmetry_index", 0.9)
-            
-            if stride < 0.5:
-                base_risk += 0.2
-            if speed < 0.8:
-                base_risk += 0.15
-            if symmetry < 0.8:
-                base_risk += 0.15
-        
-        context_lower = context.lower()
-        if "fall" in context_lower:
-            base_risk += 0.2
-        if "diabetes" in context_lower:
-            base_risk += 0.1
-        if any(f"{age}" in context_lower for age in range(75, 100)):
-            base_risk += 0.1
-        
-        return min(base_risk, 1.0)
+
     
-    def _generate_answer(self, question: str, context: str, fall_risk: float, recommendation: str) -> str:
+    def _generate_answer(self, question: str, context: str, recommendation: str) -> str:
         """Generate the final answer using LLM."""
-        prompt = f"""Based on the multi-agent analysis:
-- Fall Risk: {fall_risk:.0%}
+        prompt = f"""Based on the multi-agent clinical analysis:
 - Recommendation: {recommendation}
 
 Patient Context: {context[:500]}
@@ -301,31 +233,211 @@ Provide a concise, professional answer to the doctor's question in 2-3 sentences
         
         return response.content
     
-    def _extract_risk_factors(self, context: str, fall_risk: float) -> List[str]:
-        """Extract key risk factors using LLM."""
-        prompt = f"""Analyze this patient context and list the key risk factors for falls.
-Return only a comma-separated list of risk factors, nothing else.
+    def _should_run_debate(self, question: str) -> bool:
+        """Determine if the question warrants a treatment urgency debate."""
+        
+        classifier_prompt = f"""Analyze this medical question and determine if it's asking about TREATMENT URGENCY or IMMEDIATE CARE NEEDS.
 
-Patient Context:
-{context[:800]}
+Question: "{question}"
 
-Computed Fall Risk: {fall_risk:.0%}
+Questions that warrant debate:
+- "Does this patient need immediate treatment?"
+- "Should we escalate this case?"
+- "What's the urgency level?"
+- "Is this an emergency?"
+- "How urgent is treatment?"
+- "Should this patient be hospitalized?"
+- Questions about treatment timing, risk assessment, urgency
 
-Risk factors:"""
+Questions that DON'T warrant debate:
+- "What medications is this patient on?"
+- "What's the diagnosis?"
+- "What are the symptoms?"
+- "Tell me about the patient's history"
+- General informational questions
+
+Answer with ONLY "YES" or "NO"."""
 
         response = self.llm_client.generate(
-            system_prompt="You are a clinical analyst. Extract risk factors concisely.",
-            user_prompt=prompt,
-            max_tokens=200,
+            system_prompt="You are a question classifier for a medical system.",
+            user_prompt=classifier_prompt
         )
         
-        # Parse comma-separated response
-        factors = [f.strip() for f in response.content.split(",") if f.strip()]
+        # Check if response indicates this is about treatment urgency
+        response_text = response.content.strip().upper()
+        return "YES" in response_text
+    
+    def _run_debate(
+        self, 
+        question: str, 
+        patient_context: str,
+        agent_messages: List[AgentMessage],
+        confidence: float,
+        risk_level: str
+    ) -> tuple:
+        """Run a multi-agent debate on treatment urgency."""
         
-        if fall_risk > 0.5:
-            factors.append(f"Elevated fall risk ({fall_risk:.0%})")
+        debate_rounds = []
         
-        return factors if factors else ["Unable to extract risk factors"]
+        # ROUND 1: Initial Positions
+        round_1 = {
+            "round": 1,
+            "title": "Initial Positions",
+            "agents": {}
+        }
+        
+        # Proponent Agent (pushes for action)
+        proponent_prompt = f"""You are the PROPONENT agent in a medical debate. Your role is to advocate for decisive action when appropriate.
+
+Patient Context: {patient_context[:500]}
+Question: {question}
+Current Assessment: {risk_level} risk, {confidence:.0%} confidence
+
+Argue for immediate treatment if medically justified. Be bold but medically sound. 2-3 sentences."""
+        
+        proponent_response = self.llm_client.generate(
+            system_prompt="You are an action-oriented medical advocate.",
+            user_prompt=proponent_prompt
+        )
+        round_1["agents"]["proponent"] = proponent_response.content
+        
+        # Skeptic Agent (advocates caution)
+        skeptic_prompt = f"""You are the SKEPTIC agent in a medical debate. Your role is to question assumptions and advocate for caution.
+
+Patient Context: {patient_context[:500]}
+Question: {question}
+Current Assessment: {risk_level} risk, {confidence:.0%} confidence
+
+Challenge any rush to treatment. Highlight uncertainties and risks. 2-3 sentences."""
+        
+        skeptic_response = self.llm_client.generate(
+            system_prompt="You are a cautious medical reviewer.",
+            user_prompt=skeptic_prompt
+        )
+        round_1["agents"]["skeptic"] = skeptic_response.content
+        
+        # Mediator Agent (balanced)
+        mediator_prompt = f"""You are the MEDIATOR agent in a medical debate. Your role is to find balanced solutions.
+
+Patient Context: {patient_context[:500]}
+Question: {question}
+Current Assessment: {risk_level} risk, {confidence:.0%} confidence
+
+Weigh both action and caution. Seek middle ground. 2-3 sentences."""
+        
+        mediator_response = self.llm_client.generate(
+            system_prompt="You are a balanced medical coordinator.",
+            user_prompt=mediator_prompt
+        )
+        round_1["agents"]["mediator"] = mediator_response.content
+        
+        debate_rounds.append(round_1)
+        
+        # ROUND 2: Challenge & Rebuttal
+        round_2 = {
+            "round": 2,
+            "title": "Challenge & Rebuttal",
+            "agents": {}
+        }
+        
+        # Skeptic challenges Proponent
+        challenge_prompt = f"""The PROPONENT said: "{proponent_response.content}"
+
+As the SKEPTIC, challenge this position. Point out what could go wrong. 1-2 sentences."""
+        
+        challenge_response = self.llm_client.generate(
+            system_prompt="You are challenging overly optimistic views.",
+            user_prompt=challenge_prompt
+        )
+        round_2["agents"]["skeptic"] = challenge_response.content
+        
+        # Proponent defends
+        defense_prompt = f"""The SKEPTIC challenged you: "{challenge_response.content}"
+
+As the PROPONENT, defend your position. Address the concern. 1-2 sentences."""
+        
+        defense_response = self.llm_client.generate(
+            system_prompt="You are defending decisive medical action.",
+            user_prompt=defense_prompt
+        )
+        round_2["agents"]["proponent"] = defense_response.content
+        
+        # Mediator questions both
+        mediation_prompt = f"""PROPONENT: "{defense_response.content}"
+SKEPTIC: "{challenge_response.content}"
+
+As the MEDIATOR, what question would help resolve this? 1 sentence."""
+        
+        mediation_response = self.llm_client.generate(
+            system_prompt="You are finding common ground.",
+            user_prompt=mediation_prompt
+        )
+        round_2["agents"]["mediator"] = mediation_response.content
+        
+        debate_rounds.append(round_2)
+        
+        # ROUND 3: Final Consensus
+        round_3 = {
+            "round": 3,
+            "title": "Final Consensus",
+            "agents": {}
+        }
+        
+        # Mediator synthesizes
+        synthesis_prompt = f"""After debate, as MEDIATOR, make final recommendation on treatment urgency.
+
+Choose ONE:
+- IMMEDIATE TREATMENT NEEDED
+- ESCALATE TO SPECIALIST
+- CONTINUE MONITORING
+
+Risk level: {risk_level}
+Confidence: {confidence:.0%}
+
+Answer with decision + brief reason (1-2 sentences)."""
+        
+        synthesis_response = self.llm_client.generate(
+            system_prompt="You are making the final medical decision.",
+            user_prompt=synthesis_prompt
+        )
+        round_3["agents"]["mediator"] = synthesis_response.content
+        
+        # Extract treatment urgency from synthesis
+        synthesis_text = synthesis_response.content.upper()
+        if "IMMEDIATE" in synthesis_text:
+            treatment_urgency = "IMMEDIATE"
+        elif "ESCALATE" in synthesis_text:
+            treatment_urgency = "ESCALATE"
+        else:
+            treatment_urgency = "MONITOR"
+        
+        # Final votes from other agents
+        vote_prompt_pro = f"""Final decision: "{synthesis_response.content}"
+
+As PROPONENT, do you agree? Vote: AGREE or DISAGREE. 1 sentence."""
+        
+        vote_pro = self.llm_client.generate(
+            system_prompt="You are casting your final vote.",
+            user_prompt=vote_prompt_pro
+        )
+        round_3["agents"]["proponent"] = f"Vote: {vote_pro.content}"
+        
+        vote_prompt_skep = f"""Final decision: "{synthesis_response.content}"
+
+As SKEPTIC, do you agree? Vote: AGREE or DISAGREE. 1 sentence."""
+        
+        vote_skep = self.llm_client.generate(
+            system_prompt="You are casting your final vote.",
+            user_prompt=vote_prompt_skep
+        )
+        round_3["agents"]["skeptic"] = f"Vote: {vote_skep.content}"
+        
+        debate_rounds.append(round_3)
+        
+        return debate_rounds, treatment_urgency
+
+    
+
 
 
 # Global engine instance

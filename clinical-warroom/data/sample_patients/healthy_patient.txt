@@ -1,0 +1,88 @@
+Patient Name: Sarah Johnson
+Age: 32
+Gender: Female
+Patient ID: HEALTHY-001
+
+MEDICAL HISTORY:
+==================
+
+Chief Complaint: Annual wellness checkup - no current complaints
+
+Vital Signs (Recent):
+- Blood Pressure: 118/76 mmHg (Normal)
+- Heart Rate: 68 bpm (Normal)
+- Temperature: 98.4°F (Normal)
+- Respiratory Rate: 14 breaths/min (Normal)
+- BMI: 22.5 (Healthy weight)
+- SpO2: 99% on room air
+
+Current Medications:
+- None
+
+Allergies:
+- No known drug allergies (NKDA)
+
+Past Medical History:
+- No chronic conditions
+- No previous hospitalizations
+- No surgeries
+- Last checkup: 1 year ago - all normal
+
+Family History:
+- Father: Healthy, age 58
+- Mother: Healthy, age 56
+- No family history of heart disease, diabetes, or cancer
+
+Social History:
+- Non-smoker
+- Occasional alcohol (1-2 drinks/week)
+- Regular exercise: Runs 3-4 times per week
+- Works as software engineer
+- Married, no children
+- Good sleep hygiene (7-8 hours/night)
+
+Review of Systems:
+- Cardiovascular: No chest pain, palpitations, or edema
+- Respiratory: No shortness of breath, cough, or wheezing
+- Gastrointestinal: No nausea, vomiting, diarrhea, or abdominal pain
+- Neurological: No headaches, dizziness, or numbness
+- Musculoskeletal: No joint pain or muscle weakness
+- General: Feels healthy, good energy levels
+
+Recent Lab Work (3 months ago):
+- Complete Blood Count: All values within normal range
+- Comprehensive Metabolic Panel: All values normal
+- Lipid Panel:
+  * Total Cholesterol: 175 mg/dL (Optimal)
+  * LDL: 95 mg/dL (Optimal)
+  * HDL: 65 mg/dL (Optimal)
+  * Triglycerides: 75 mg/dL (Normal)
+- HbA1c: 5.2% (Normal)
+- Thyroid Function: Normal
+
+Physical Examination:
+- General Appearance: Well-nourished, well-developed, in no acute distress
+- HEENT: Normal
+- Cardiovascular: Regular rate and rhythm, no murmurs
+- Respiratory: Clear to auscultation bilaterally
+- Abdomen: Soft, non-tender, no masses
+- Extremities: No edema, normal pulses
+- Neurological: Alert and oriented x3, cranial nerves intact
+
+Assessment:
+Patient is a healthy 32-year-old female presenting for routine annual wellness examination. No acute or chronic medical issues identified. All screening tests and vital signs within normal limits. Patient maintains excellent lifestyle habits including regular exercise, healthy diet, and good sleep hygiene.
+
+Plan:
+- Continue current healthy lifestyle
+- Routine age-appropriate health maintenance
+- Return to clinic in 1 year for annual checkup
+- No medications needed
+- No immediate interventions required
+
+Risk Assessment:
+- Fall Risk: Low
+- Cardiovascular Risk: Low
+- Metabolic Risk: Low
+- Overall Health Status: Excellent
+
+CLINICAL IMPRESSION: Healthy patient with no acute or chronic medical concerns. Continue preventive care and healthy lifestyle. Routine monitoring recommended.

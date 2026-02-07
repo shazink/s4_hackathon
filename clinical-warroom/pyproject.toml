@@ -14,15 +14,15 @@ dependencies = [
     "pydantic>=2.5.0",
     
     # LLM (Phase 1+)
-    # "groq>=0.4.0",
+    "groq>=0.4.0",
     
     # RAG (Phase 2+)
-    # "chromadb>=0.4.0",
-    # "sentence-transformers>=2.2.0",
+    "chromadb>=0.4.0",
+    "sentence-transformers>=2.2.0",
     
     # ML/RL (Phase 6+)
-    # "numpy>=1.24.0",
-    # "scikit-learn>=1.3.0",
+    "numpy>=1.24.0",
+    "scikit-learn>=1.3.0",
 ]
 
 [project.optional-dependencies]

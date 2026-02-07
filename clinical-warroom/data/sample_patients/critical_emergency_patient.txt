@@ -1,0 +1,110 @@
+Patient Name: Michael Chen
+Age: 67
+Gender: Male
+Patient ID: CRITICAL-001
+
+MEDICAL HISTORY:
+==================
+
+Chief Complaint: ACUTE CHEST PAIN - Severe crushing chest pain radiating to left arm for past 45 minutes
+
+EMERGENCY PRESENTATION - REQUIRES IMMEDIATE ATTENTION
+
+Vital Signs (CURRENT - ABNORMAL):
+- Blood Pressure: 170/105 mmHg (SEVERELY ELEVATED)
+- Heart Rate: 115 bpm (TACHYCARDIA)
+- Temperature: 98.9°F
+- Respiratory Rate: 24 breaths/min (TACHYPNEA)
+- SpO2: 92% on room air (HYPOXIA)
+- Pain Level: 9/10
+
+ACUTE SYMPTOMS (ONSET 45 MIN AGO):
+- Severe crushing chest pain (substernal)
+- Pain radiating to left arm and jaw
+- Diaphoresis (profuse sweating)
+- Nausea and vomiting
+- Shortness of breath
+- Feeling of impending doom
+- Pale, clammy skin
+
+Current Medications:
+- Metoprolol 50mg BID (for hypertension)
+- Aspirin 81mg daily
+- Lisinopril 20mg daily
+- Atorvastatin 40mg nightly
+- Metformin 1000mg BID (for Type 2 diabetes)
+
+Allergies:
+- Sulfa drugs (Stevens-Johnson syndrome)
+
+Past Medical History:
+- Type 2 Diabetes Mellitus (10 years, poorly controlled)
+- Hypertension (15 years)
+- Hyperlipidemia (8 years)
+- Chronic kidney disease Stage 3
+- Peripheral vascular disease
+- Prior TIA (transient ischemic attack) 2 years ago
+
+Family History:
+- Father: Died age 62 from myocardial infarction
+- Mother: Died age 71 from stroke
+- Brother: Coronary artery bypass graft at age 60
+
+Social History:
+- Heavy smoker: 2 packs/day for 40 years (80 pack-years)
+- No alcohol use
+- Sedentary lifestyle
+- Works as accountant, high stress
+- Non-compliant with medications ("forgets doses")
+
+Recent Labs (2 weeks ago):
+- HbA1c: 9.2% (POORLY CONTROLLED DIABETES)
+- Total Cholesterol: 280 mg/dL (VERY HIGH)
+- LDL: 195 mg/dL (VERY HIGH)
+- Troponin: (STAT pending - suspected ELEVATED)
+- BNP: Elevated
+- Creatinine: 1.8 mg/dL (impaired renal function)
+
+ECG FINDINGS (STAT):
+- ST-segment elevations in leads II, III, aVF
+- Reciprocal ST depressions in leads V1-V3
+- Suggestive of ACUTE INFERIOR WALL MI
+
+Physical Examination:
+- General: Appears acutely ill, diaphoretic, anxious
+- EMERGENCY STATUS
+- Cardiovascular: Tachycardic, S4 gallop present
+- Respiratory: Bibasilar crackles
+- Abdomen: Soft, non-tender
+- Extremities: Cool, clammy, weak peripheral pulses
+- Neurological: Alert but anxious
+
+ASSESSMENT - CRITICAL:
+67-year-old male presenting with ACUTE CORONARY SYNDROME - likely ST-Elevation Myocardial Infarction (STEMI). Multiple cardiovascular risk factors including diabetes, hypertension, heavy smoking, family history. ECG changes consistent with acute inferior wall MI.
+
+IMMEDIATE INTERVENTIONS REQUIRED:
+- ACTIVATE CARDIAC CATHETERIZATION LAB
+- Aspirin 325mg CHEWED immediately
+- Nitroglycerin sublingual
+- IV access established
+- Continuous cardiac monitoring
+- Oxygen therapy to maintain SpO2 >94%
+- Morphine for pain control
+- Antiplatelet therapy (clopidogrel loading dose)
+- Anticoagulation (heparin)
+- URGENT cardiology consultation
+- Prepare for emergency PCI (percutaneous coronary intervention)
+
+TIME-CRITICAL CONDITION:
+Door-to-balloon time target: <90 minutes
+STEMI protocol activated
+
+Risk Assessment:
+- IMMEDIATE LIFE-THREATENING EMERGENCY
+- High risk for cardiogenic shock
+- High risk for malignant arrhythmias
+- Fall Risk: Unable to assess (bed rest required)
+- Mortality Risk: HIGH without immediate intervention
+
+CLINICAL IMPRESSION: ACUTE ST-ELEVATION MYOCARDIAL INFARCTION (STEMI)
+**THIS IS A MEDICAL EMERGENCY REQUIRING IMMEDIATE CARDIOLOGY INTERVENTION**

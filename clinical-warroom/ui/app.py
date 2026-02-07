@@ -21,60 +21,143 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 # Page config
 st.set_page_config(
-    page_title="Clinical War Room",
+    page_title="Clinical Decision Support Platform",
     page_icon="🏥",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-# Custom CSS
+# Custom CSS - Professional Medical Theme
 st.markdown("""
 <style>
-    .stApp {
-        background-color: #0f172a;
+    /* Hide Streamlit default header, menu, and footer */
+    #MainMenu {visibility: hidden;}
+    header {visibility: hidden;}
+    footer {visibility: hidden;}
+    
+    /* Remove top padding to make room for custom header */
+    .block-container {
+        padding-top: 1rem;
     }
     
+    .stApp {
+        background-color: #0a1628;
+    }
+    
+    /* Professional header styling */
+    h1 {
+        color: #60a5fa !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.5px !important;
+    }
+    
+    h2, h3 {
+        color: #93c5fd !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Chat message styling */
     .chat-message {
-        padding: 12px 16px;
-        border-radius: 12px;
-        margin: 8px 0;
+        padding: 16px 20px;
+        border-radius: 8px;
+        margin: 12px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
     
     .user-message {
-        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
         color: white;
-        margin-left: 20%;
+        margin-left: 15%;
+        border-left: 4px solid #3b82f6;
     }
     
     .assistant-message {
-        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-        border: 1px solid #374151;
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        border: 1px solid #334155;
+        border-left: 4px solid #60a5fa;
+        color: #e2e8f0;
     }
     
+    /* Risk badges - medical colors */
     .risk-badge {
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 0.85em;
-        font-weight: bold;
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-size: 0.8em;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
         display: inline-block;
     }
     
-    .risk-low { background: #22c55e22; color: #22c55e; border: 1px solid #22c55e; }
-    .risk-moderate { background: #eab30822; color: #eab308; border: 1px solid #eab308; }
-    .risk-high { background: #ef444422; color: #ef4444; border: 1px solid #ef4444; }
-    .risk-critical { background: #dc262622; color: #dc2626; border: 1px solid #dc2626; }
+    .risk-low { 
+        background: #064e3b; 
+        color: #6ee7b7; 
+        border: 2px solid #10b981; 
+    }
+    .risk-moderate { 
+        background: #713f12; 
+        color: #fcd34d; 
+        border: 2px solid #f59e0b; 
+    }
+    .risk-high { 
+        background: #7f1d1d; 
+        color: #fca5a5; 
+        border: 2px solid #ef4444; 
+    }
+    .risk-critical { 
+        background: #450a0a; 
+        color: #fca5a5; 
+        border: 2px solid #dc2626;
+        animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+    }
+    
+    /* Sidebar styling */
+    [data-testid="stSidebar"] {
+        background-color: #0f172a;
+        border-right: 1px solid #1e293b;
+    }
+    
+    /* Button styling */
+    .stButton>button {
+        background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: 500;
+        padding: 0.5rem 1.5rem;
+        transition: all 0.3s;
+    }
+    
+    .stButton>button:hover {
+        background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        transform: translateY(-1px);
+    }
 </style>
 """, unsafe_allow_html=True)
 
 
 def render_header():
-    """Render the War Room header."""
-    col1, col2 = st.columns([4, 1])
+    """Render the professional medical header."""
+    col1, col2, col3 = st.columns([6, 2, 1])
     with col1:
-        st.title("🏥 Clinical War Room")
-        st.caption("Multi-Agent Decision Support System")
+        st.markdown("""
+        <div style="padding: 10px 0;">
+            <h1 style="margin: 0; color: #60a5fa; font-size: 2.2em;">🏥 Clinical Decision Support Platform</h1>
+            <p style="margin: 5px 0 0 0; color: #94a3b8; font-size: 0.95em;">AI-Powered Multi-Agent Clinical Analysis System</p>
+        </div>
+        """, unsafe_allow_html=True)
     with col2:
-        st.success("● LIVE")
+        st.markdown("""
+        <div style="padding: 20px 0; text-align: right;">
+            <span style="color: #10b981; font-weight: 600;">● SYSTEM ONLINE</span>
+        </div>
+        """, unsafe_allow_html=True)
 
 
 def render_upload_patient_tab():
@@ -170,18 +253,6 @@ def render_upload_patient_tab():
                 
                 st.success(f"✅ Patient added: **{patient_id}**")
                 st.balloons()
-    
-    # Show existing patients
-    st.markdown("---")
-    st.markdown("## 📋 Stored Patients")
-    
-    patients = store.list_patients()
-    if patients:
-        for p in patients:
-            with st.expander(f"🧑‍⚕️ {p['name']} ({p['patient_id']})"):
-                st.markdown(f"**Age:** {p['age']} | **Gender:** {p['gender']}")
-    else:
-        st.info("No patients in database. Add a patient above.")
 
 
 def render_chat_interface():
@@ -287,28 +358,105 @@ def render_chat_response(response):
             <span class="risk-badge {risk_class}">{response.risk_level.upper()} RISK</span>
         </div>
         <div style="margin-bottom: 12px;">{response.answer}</div>
-        <div style="font-size: 0.9em; color: #9ca3af;">
-            Confidence: {response.confidence:.0%} | Recommendation: <strong>{response.recommendation}</strong>
-        </div>
     </div>
     """, unsafe_allow_html=True)
     
-    # Risk factors
-    if response.risk_factors:
-        st.markdown("**Risk Factors:**")
-        for rf in response.risk_factors:
-            st.markdown(f"- {rf}")
+    # Multi-Agent Debate Section
+    if response.debate_rounds:
+        render_debate_section(response.debate_rounds, response.treatment_urgency)
+    
     
     # Agent deliberation - expandable
     with st.expander("🔍 View Agent Deliberation", expanded=False):
         render_agent_deliberation(response.agent_messages)
     
-    # RL explanation
-    if response.rl_explanation:
-        with st.expander("🧠 RL Decision Explanation", expanded=False):
-            st.info(response.rl_explanation)
-            if response.rl_was_overridden:
-                st.warning("⚠️ Safety override was applied")
+    
+
+def render_debate_section(debate_rounds, treatment_urgency):
+    """Render the multi-agent debate in 3 columns."""
+    st.markdown("### 💬 Multi-Agent Debate: Treatment Urgency")
+    st.markdown("---")
+    
+    # Agent colors
+    agent_colors = {
+        "proponent": "#10b981",  # green
+        "skeptic": "#ef4444",    # red
+        "mediator": "#f59e0b"    # yellow/orange
+    }
+    
+    agent_names = {
+        "proponent": "🟢 Proponent",
+        "skeptic": "🔴 Skeptic",
+        "mediator": "🟡 Mediator"
+    }
+    
+    # Display each debate round
+    for round_data in debate_rounds:
+        st.markdown(f"#### Round {round_data['round']}: {round_data['title']}")
+        
+        # Create 3 columns for the 3 agents
+        col1, col2, col3 = st.columns(3)
+        
+        cols = [col1, col2, col3]
+        agent_keys = ["proponent", "skeptic", "mediator"]
+        
+        for i, (col, agent_key) in enumerate(zip(cols, agent_keys)):
+            with col:
+                agent_message = round_data["agents"].get(agent_key, "")
+                if agent_message:
+                    color = agent_colors[agent_key]
+                    name = agent_names[agent_key]
+                    
+                    # Speech bubble style
+                    st.markdown(f"""
+                    <div style="
+                        background: linear-gradient(135deg, {color}22 0%, {color}11 100%);
+                        border-left: 4px solid {color};
+                        border-radius: 12px;
+                        padding: 16px;
+                        margin-bottom: 12px;
+                        min-height: 100px;
+                    ">
+                        <div style="font-weight: bold; color: {color}; margin-bottom: 8px;">
+                            {name}
+                        </div>
+                        <div style="color: #e5e7eb; font-size: 0.95em;">
+                            {agent_message}
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+        
+        st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Final Consensus Card
+    st.markdown("---")
+    urgency_colors = {
+        "IMMEDIATE": ("#ef4444", "🚨 IMMEDIATE TREATMENT NEEDED"),
+        "ESCALATE": ("#f59e0b", "⚠️ ESCALATE TO SPECIALIST"),
+        "MONITOR": ("#10b981", "📋 CONTINUE MONITORING")
+    }
+    
+    color, label = urgency_colors.get(treatment_urgency, ("#6b7280", "⚪ NO DECISION"))
+    
+    st.markdown(f"""
+    <div style="
+        background: linear-gradient(135deg, {color}33 0%, {color}22 100%);
+        border: 2px solid {color};
+        border-radius: 16px;
+        padding: 24px;
+        text-align: center;
+        margin: 20px 0;
+    ">
+        <div style="font-size: 1.5em; font-weight: bold; color: {color}; margin-bottom: 8px;">
+            {label}
+        </div>
+        <div style="color: #9ca3af; font-size: 0.9em;">
+            Consensus reached through multi-agent deliberation
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("---")
 
 
 def render_agent_deliberation(messages):
@@ -319,7 +467,7 @@ def render_agent_deliberation(messages):
         "Evidence Agent": "📚",
         "Ethics Agent": "⚖️",
         "Data Quality Agent": "📊",
-        "RL Coordinator": "🧠",
+        "Decision System": "🤖",
     }
     
     for msg in messages:
@@ -332,8 +480,6 @@ def render_agent_deliberation(messages):
             with col2:
                 st.markdown(f"**{msg.agent_name}**")
                 st.markdown(msg.message)
-                if msg.confidence > 0:
-                    st.caption(f"Confidence: {msg.confidence:.0%}")
             st.markdown("---")
 
 
@@ -341,14 +487,14 @@ def main():
     """Main app entry point."""
     render_header()
     
-    # Mode selector
-    st.sidebar.markdown("## 🎮 Mode")
+    # Professional mode selector
+    st.sidebar.markdown("## ⚙️ System Controls")
     mode = st.sidebar.radio(
-        "Select:",
+        "Select Mode:",
         options=["chat", "upload"],
         format_func=lambda x: {
-            "chat": "💬 Query Patient",
-            "upload": "📤 Add Patient", 
+            "chat": "💬 Clinical Query",
+            "upload": "📥 Patient Registration", 
         }[x],
     )
     
@@ -363,19 +509,20 @@ def main():
         pass
     
     st.sidebar.markdown("---")
-    st.sidebar.markdown("### ℹ️ System Info")
-    st.sidebar.caption("• LLM: Groq API")
-    st.sidebar.caption("• Storage: ChromaDB")
-    st.sidebar.caption("• RL: Trained Q-Learning")
+    st.sidebar.markdown("### 📊 System Status")
+    st.sidebar.caption("• AI Engine: Groq API (Llama 3.3)")
+    st.sidebar.caption("• Vector DB: ChromaDB")
+    st.sidebar.caption("• Agents: 5 Analysis + 3 Debate")
+    st.sidebar.caption("• Decision: Confidence-Based")
     
     if mode == "chat":
         render_chat_interface()
     else:
         render_upload_patient_tab()
     
-    # Footer
+    # Professional footer
     st.markdown("---")
-    st.caption("Clinical War Room v1.0 | Multi-Agent Decision Support")
+    st.caption("Clinical Decision Support Platform v2.0 | AI-Powered Multi-Agent Analysis")
 
 
 if __name__ == "__main__":
