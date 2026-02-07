@@ -1,0 +1,47 @@
+# Patient Clinical Record
+
+**Patient ID:** AUTO-GENERATED
+**Name:** Margaret Williams
+**Age:** 82
+**Gender:** Female
+
+## Chief Complaint
+Family concerned about frequent falls at home and declining mobility.
+
+## Medical History
+- Osteoporosis (T-score: -3.2 at lumbar spine)
+- Prior hip fracture (right, 2022, surgical repair)
+- Mild cognitive impairment (MMSE: 24/30)
+- Atrial fibrillation (on anticoagulation)
+- Chronic kidney disease Stage 3
+
+## Current Medications
+- Warfarin 5mg daily (INR target 2-3)
+- Alendronate 70mg weekly
+- Donepezil 10mg daily
+- Metoprolol 25mg twice daily
+- Calcium/Vitamin D supplement
+
+## Physical Examination
+- Height: 5'2" | Weight: 115 lbs | BMI: 21.0
+- Kyphotic posture
+- Decreased range of motion bilateral hips
+- Uses walker for all ambulation
+
+## Gait Assessment
+- Stride Length: 0.35 m
+- Gait Speed: 0.45 m/s
+- Symmetry Index: 0.68
+- Shuffling gait pattern
+- Requires walker at all times
+
+## Recent Falls
+- 4 falls in past 6 months
+- 1 fall resulted in wrist fracture
+- Multiple near-falls daily
+
+## Living Situation
+Lives alone in two-story home. Family considering assisted living placement.
+
+## Risk Assessment Notes
+HIGH FALL RISK due to: anticoagulation, osteoporosis, cognitive impairment, and fall history.

@@ -1,0 +1,282 @@
+[
+  {
+    "episode": 55,
+    "avg_reward": 1.6272727272727272,
+    "exploration_rate": 0.5,
+    "q_table_size": 29,
+    "accuracy": 1.0
+  },
+  {
+    "episode": 110,
+    "avg_reward": 1.6272727272727272,
+    "exploration_rate": 0.5,
+    "q_table_size": 29,
+    "accuracy": 1.0
+  },
+  {
+    "episode": 165,
+    "avg_reward": 1.6272727272727272,
+    "exploration_rate": 0.5,
+    "q_table_size": 29,
+    "accuracy": 1.0
+  },
+  {
+    "episode": 220,
+    "avg_reward": 1.6272727272727272,
+    "exploration_rate": 0.5,
+    "q_table_size": 29,
+    "accuracy": 1.0
+  },
+  {
+    "episode": 275,
+    "avg_reward": 1.6272727272727272,
+    "exploration_rate": 0.5,
+    "q_table_size": 29,
+    "accuracy": 1.0
+  },
+  {
+    "episode": 330,
+    "avg_reward": 1.6272727272727272,
+    "exploration_rate": 0.5,
+    "q_table_size": 29,
+    "accuracy": 1.0
+  },
+  {
+    "episode": 385,
+    "avg_reward": 1.6272727272727272,
+    "exploration_rate": 0.5,
+    "q_table_size": 29,
+    "accuracy": 1.0
+  },
+  {
+    "episode": 440,
+    "avg_reward": 1.6272727272727272,
+    "exploration_rate": 0.5,
+    "q_table_size": 29,
+    "accuracy": 1.0
+  },
+  {
+    "episode": 495,
+    "avg_reward": 1.6272727272727272,
+    "exploration_rate": 0.5,
+    "q_table_size": 29,
+    "accuracy": 1.0
+  },
+  {
+    "episode": 550,
+    "avg_reward": 1.6272727272727272,
+    "exploration_rate": 0.5,
+    "q_table_size": 29,
+    "accuracy": 1.0
+  },
+  {
+    "episode": 100,
+    "avg_reward": -0.865,
+    "exploration_rate": 0.3028852182453639,
+    "q_table_size": 125,
+    "accuracy": 0.26
+  },
+  {
+    "episode": 200,
+    "avg_reward": -0.5155000000000001,
+    "exploration_rate": 0.18347891086308354,
+    "q_table_size": 291,
+    "accuracy": 0.32
+  },
+  {
+    "episode": 300,
+    "avg_reward": -0.7350000000000001,
+    "exploration_rate": 0.11114609992037351,
+    "q_table_size": 432,
+    "accuracy": 0.33
+  },
+  {
+    "episode": 400,
+    "avg_reward": -0.7575000000000002,
+    "exploration_rate": 0.0673290214630067,
+    "q_table_size": 570,
+    "accuracy": 0.3
+  },
+  {
+    "episode": 500,
+    "avg_reward": -0.932,
+    "exploration_rate": 0.05,
+    "q_table_size": 683,
+    "accuracy": 0.31
+  },
+  {
+    "episode": 600,
+    "avg_reward": -0.6745,
+    "exploration_rate": 0.05,
+    "q_table_size": 777,
+    "accuracy": 0.32
+  },
+  {
+    "episode": 700,
+    "avg_reward": -0.4625000000000001,
+    "exploration_rate": 0.05,
+    "q_table_size": 882,
+    "accuracy": 0.36
+  },
+  {
+    "episode": 800,
+    "avg_reward": -0.794,
+    "exploration_rate": 0.05,
+    "q_table_size": 976,
+    "accuracy": 0.3
+  },
+  {
+    "episode": 900,
+    "avg_reward": -0.3725,
+    "exploration_rate": 0.05,
+    "q_table_size": 1060,
+    "accuracy": 0.31
+  },
+  {
+    "episode": 1000,
+    "avg_reward": -0.4890000000000001,
+    "exploration_rate": 0.05,
+    "q_table_size": 1147,
+    "accuracy": 0.34
+  },
+  {
+    "episode": 1100,
+    "avg_reward": -0.37399999999999983,
+    "exploration_rate": 0.05,
+    "q_table_size": 1226,
+    "accuracy": 0.34
+  },
+  {
+    "episode": 1200,
+    "avg_reward": -0.2800000000000001,
+    "exploration_rate": 0.05,
+    "q_table_size": 1313,
+    "accuracy": 0.31
+  },
+  {
+    "episode": 1300,
+    "avg_reward": -0.09750000000000006,
+    "exploration_rate": 0.05,
+    "q_table_size": 1384,
+    "accuracy": 0.34
+  },
+  {
+    "episode": 1400,
+    "avg_reward": -0.4005,
+    "exploration_rate": 0.05,
+    "q_table_size": 1450,
+    "accuracy": 0.38
+  },
+  {
+    "episode": 1500,
+    "avg_reward": -0.882,
+    "exploration_rate": 0.05,
+    "q_table_size": 1529,
+    "accuracy": 0.38
+  },
+  {
+    "episode": 1600,
+    "avg_reward": -0.4205,
+    "exploration_rate": 0.05,
+    "q_table_size": 1602,
+    "accuracy": 0.29
+  },
+  {
+    "episode": 1700,
+    "avg_reward": -0.299,
+    "exploration_rate": 0.05,
+    "q_table_size": 1669,
+    "accuracy": 0.41
+  },
+  {
+    "episode": 1800,
+    "avg_reward": -0.5894999999999999,
+    "exploration_rate": 0.05,
+    "q_table_size": 1734,
+    "accuracy": 0.39
+  },
+  {
+    "episode": 1900,
+    "avg_reward": -0.157,
+    "exploration_rate": 0.05,
+    "q_table_size": 1799,
+    "accuracy": 0.36
+  },
+  {
+    "episode": 2000,
+    "avg_reward": -0.7205000000000003,
+    "exploration_rate": 0.05,
+    "q_table_size": 1854,
+    "accuracy": 0.3
+  },
+  {
+    "episode": 2100,
+    "avg_reward": -0.2884999999999999,
+    "exploration_rate": 0.05,
+    "q_table_size": 1904,
+    "accuracy": 0.35
+  },
+  {
+    "episode": 2200,
+    "avg_reward": 0.34450000000000003,
+    "exploration_rate": 0.05,
+    "q_table_size": 1950,
+    "accuracy": 0.35
+  },
+  {
+    "episode": 2300,
+    "avg_reward": -0.3525,
+    "exploration_rate": 0.05,
+    "q_table_size": 1996,
+    "accuracy": 0.39
+  },
+  {
+    "episode": 2400,
+    "avg_reward": -0.13549999999999995,
+    "exploration_rate": 0.05,
+    "q_table_size": 2047,
+    "accuracy": 0.45
+  },
+  {
+    "episode": 2500,
+    "avg_reward": 0.2305,
+    "exploration_rate": 0.05,
+    "q_table_size": 2101,
+    "accuracy": 0.36
+  },
+  {
+    "episode": 2600,
+    "avg_reward": -0.20200000000000004,
+    "exploration_rate": 0.05,
+    "q_table_size": 2148,
+    "accuracy": 0.4
+  },
+  {
+    "episode": 2700,
+    "avg_reward": -0.08350000000000003,
+    "exploration_rate": 0.05,
+    "q_table_size": 2192,
+    "accuracy": 0.45
+  },
+  {
+    "episode": 2800,
+    "avg_reward": -0.07550000000000003,
+    "exploration_rate": 0.05,
+    "q_table_size": 2226,
+    "accuracy": 0.39
+  },
+  {
+    "episode": 2900,
+    "avg_reward": -0.206,
+    "exploration_rate": 0.05,
+    "q_table_size": 2277,
+    "accuracy": 0.43
+  },
+  {
+    "episode": 3000,
+    "avg_reward": -0.01200000000000005,
+    "exploration_rate": 0.05,
+    "q_table_size": 2324,
+    "accuracy": 0.43
+  }
+]

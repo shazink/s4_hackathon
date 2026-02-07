@@ -1,0 +1,47 @@
+# Patient Clinical Record
+
+**Patient ID:** AUTO-GENERATED
+**Name:** Sarah Thompson
+**Age:** 45
+**Gender:** Female
+
+## Chief Complaint
+Difficulty with balance and coordination following recovery from COVID-19.
+
+## Medical History
+- Post-COVID syndrome (long COVID, 8 months duration)
+- Hypothyroidism (well-controlled)
+- Anxiety disorder
+- No history of falls prior to COVID infection
+
+## Current Medications
+- Levothyroxine 75mcg daily
+- Escitalopram 10mg daily
+- Vitamin D 2000 IU daily
+
+## COVID-19 History
+- Infected March 2025, moderate severity (no hospitalization)
+- Persistent symptoms: fatigue, brain fog, dizziness, palpitations
+
+## Physical Examination
+- Height: 5'6" | Weight: 145 lbs | BMI: 23.4
+- Orthostatic hypotension (BP drop 20 mmHg on standing)
+- Tandem gait impaired
+- Romberg test positive
+
+## Gait Assessment
+- Stride Length: 0.62 m
+- Gait Speed: 1.05 m/s
+- Symmetry Index: 0.88
+- Gait appears normal but patient reports fatigue after 100 meters
+- Difficulty with quick turns
+
+## Recent Falls
+- 2 falls in past 3 months (both when turning quickly)
+- No injuries
+
+## Work Status
+Software engineer, working from home. Unable to return to office due to fatigue.
+
+## Notes
+Consider vestibular rehabilitation and dysautonomia workup.

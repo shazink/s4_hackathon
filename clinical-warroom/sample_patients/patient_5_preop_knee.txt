@@ -1,0 +1,50 @@
+# Patient Clinical Record
+
+**Patient ID:** AUTO-GENERATED
+**Name:** William Davis
+**Age:** 55
+**Gender:** Male
+
+## Chief Complaint
+Pre-operative evaluation for elective knee replacement surgery.
+
+## Medical History
+- Severe osteoarthritis bilateral knees (right worse than left)
+- Obesity
+- Obstructive sleep apnea (on CPAP)
+- Hyperlipidemia
+- No cardiac history
+- No diabetes
+
+## Current Medications
+- Atorvastatin 20mg daily
+- Naproxen 500mg twice daily as needed
+- Glucosamine supplement
+
+## Surgical History
+- Appendectomy (age 22)
+- Right knee arthroscopy (2018)
+
+## Physical Examination
+- Height: 5'9" | Weight: 245 lbs | BMI: 36.2
+- Bilateral knee crepitus
+- Right knee ROM: 5-95 degrees (limited)
+- Varus deformity right knee
+- No edema
+
+## Gait Assessment
+- Stride Length: 0.55 m
+- Gait Speed: 0.85 m/s
+- Symmetry Index: 0.72
+- Antalgic gait (right-sided limp)
+- Uses cane for distances >100 meters
+
+## Recent Falls
+- No falls in past year
+- Reports feeling stable despite knee pain
+
+## Pre-Operative Goals
+Assess fall risk for post-operative planning. Patient scheduled for right total knee arthroplasty in 4 weeks.
+
+## Notes
+Low baseline fall risk but will need fall prevention protocol post-surgery during rehabilitation phase.

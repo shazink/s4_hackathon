@@ -1,0 +1,47 @@
+# Patient Clinical Record
+
+**Patient ID:** AUTO-GENERATED
+**Name:** James Morrison
+**Age:** 71
+**Gender:** Male
+
+## Chief Complaint
+Tremor in right hand and slowness of movement noticed by wife over past year.
+
+## Medical History
+- Parkinson's Disease (diagnosed 6 months ago, Hoehn & Yahr Stage 2)
+- Benign prostatic hyperplasia
+- Depression (mild, treated)
+- No prior falls
+
+## Current Medications
+- Carbidopa/Levodopa 25/100mg three times daily
+- Tamsulosin 0.4mg daily
+- Sertraline 50mg daily
+
+## Physical Examination
+- Height: 5'11" | Weight: 175 lbs | BMI: 24.4
+- Resting tremor right hand (4-6 Hz)
+- Cogwheel rigidity bilateral upper extremities
+- Masked facies
+- Reduced arm swing with walking
+
+## Gait Assessment
+- Stride Length: 0.52 m
+- Gait Speed: 0.78 m/s
+- Symmetry Index: 0.75
+- Festinating gait
+- Difficulty initiating movement
+- Freezing episodes reported (2-3 times weekly)
+
+## Recent Falls
+- No falls in past year
+- 2 near-falls during freezing episodes
+
+## Functional Status
+- Independent in ADLs with extra time
+- Still driving (restricted to daytime, familiar routes)
+- Retired engineer, cognitively intact
+
+## Treatment Goals
+Maintain mobility and prevent falls as disease progresses.

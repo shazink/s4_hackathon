@@ -1,0 +1,40 @@
+# Patient Clinical Record
+
+**Patient ID:** AUTO-GENERATED
+**Name:** Robert Chen
+**Age:** 68
+**Gender:** Male
+
+## Chief Complaint
+Progressive difficulty walking and balance issues over the past 3 months.
+
+## Medical History
+- Type 2 Diabetes Mellitus (diagnosed 2015, A1C: 7.2%)
+- Hypertension (controlled with Lisinopril 10mg daily)
+- Peripheral neuropathy in both feet
+- Former smoker (quit 10 years ago)
+
+## Current Medications
+- Metformin 1000mg twice daily
+- Lisinopril 10mg daily
+- Gabapentin 300mg three times daily
+
+## Physical Examination
+- Height: 5'10" | Weight: 185 lbs | BMI: 26.5
+- Blood pressure: 128/82 mmHg
+- Reduced sensation in bilateral feet (monofilament test positive)
+- Mild weakness in ankle dorsiflexion bilaterally
+
+## Gait Assessment
+- Stride Length: 0.58 m
+- Gait Speed: 0.92 m/s
+- Symmetry Index: 0.82
+- Wide-based gait observed
+- Uses walls for support when walking
+
+## Recent Falls
+- 1 fall in past 6 months (no injury)
+- Near-falls reported weekly
+
+## Patient Goals
+Maintain independence and continue daily walks in the neighborhood.

@@ -1,0 +1,86 @@
+{
+  "PAT-C84AFB31": {
+    "patient_id": "PAT-C84AFB31",
+    "name": "John Smith",
+    "age": 72,
+    "gender": "Male",
+    "medical_history": "Name: John Smith\nAge: 72\nGender: Male\n\nChief complaint: Gait instability. History of 3 falls in past year. Diabetes. Hypertension.",
+    "gait_data": {},
+    "chief_complaint": "",
+    "raw_text": "Name: John Smith\nAge: 72\nGender: Male\n\nChief complaint: Gait instability. History of 3 falls in past year. Diabetes. Hypertension.",
+    "created_at": "2026-02-07T12:16:02.997354",
+    "updated_at": "2026-02-07T12:16:02.997354"
+  },
+  "PAT-718651DD": {
+    "patient_id": "PAT-718651DD",
+    "name": "Mary Johnson",
+    "age": 75,
+    "gender": "Female",
+    "medical_history": "Name: Mary Johnson\nAge: 75\nGender: Female\n\nChief complaint: Gait instability. History of 2 falls in past 6 months. Type 2 diabetes. Hypertension. Reduced stride length and asymmetric gait pattern observed.",
+    "gait_data": {},
+    "chief_complaint": "",
+    "raw_text": "Name: Mary Johnson\nAge: 75\nGender: Female\n\nChief complaint: Gait instability. History of 2 falls in past 6 months. Type 2 diabetes. Hypertension. Reduced stride length and asymmetric gait pattern observed.",
+    "created_at": "2026-02-07T12:22:22.042683",
+    "updated_at": "2026-02-07T12:22:22.042683"
+  },
+  "PAT-63226A3A": {
+    "patient_id": "PAT-63226A3A",
+    "name": "Mary Johnson",
+    "age": 75,
+    "gender": "Female",
+    "medical_history": "Name: Mary Johnson\nAge: 75\nGender: Female\n\nChief complaint: Gait instability. History of 2 falls in past 6 months. Type 2 diabetes. Hypertension. Reduced stride length and asymmetric gait pattern observed.",
+    "gait_data": {},
+    "chief_complaint": "",
+    "raw_text": "Name: Mary Johnson\nAge: 75\nGender: Female\n\nChief complaint: Gait instability. History of 2 falls in past 6 months. Type 2 diabetes. Hypertension. Reduced stride length and asymmetric gait pattern observed.",
+    "created_at": "2026-02-07T12:22:38.445685",
+    "updated_at": "2026-02-07T12:22:38.445685"
+  },
+  "PAT-56482EA1": {
+    "patient_id": "PAT-56482EA1",
+    "name": "Patient 2EA1",
+    "age": 0,
+    "gender": "Unknown",
+    "medical_history": "# Patient Clinical Record\n\n**Patient ID:** AUTO-GENERATED\n**Name:** Robert Chen\n**Age:** 68\n**Gender:** Male\n\n## Chief Complaint\nProgressive difficulty walking and balance issues over the past 3 months.\n\n## Medical History\n- Type 2 Diabetes Mellitus (diagnosed 2015, A1C: 7.2%)\n- Hypertension (controlled with Lisinopril 10mg daily)\n- Peripheral neuropathy in both feet\n- Former smoker (quit 10 years ago)\n\n## Current Medications\n- Metformin 1000mg twice daily\n- Lisinopril 10mg daily\n- Gabapentin 300mg three times daily\n\n## Physical Examination\n- Height: 5'10\" | Weight: 185 lbs | BMI: 26.5\n- Blood pressure: 128/82 mmHg\n- Reduced sensation in bilateral feet (monofilament test positive)\n- Mild weakness in ankle dorsiflexion bilaterally\n\n## Gait Assessment\n- Stride Length: 0.58 m\n- Gait Speed: 0.92 m/s\n- Symmetry Index: 0.82\n- Wide-based gait observed\n- Uses walls for support when walking\n\n## Recent Falls\n- 1 fall in past 6 months (no injury)\n- Near-falls reported weekly\n\n## Patient Goals\nMaintain independence and continue daily walks in the neighborhood.",
+    "gait_data": {},
+    "chief_complaint": "",
+    "raw_text": "# Patient Clinical Record\n\n**Patient ID:** AUTO-GENERATED\n**Name:** Robert Chen\n**Age:** 68\n**Gender:** Male\n\n## Chief Complaint\nProgressive difficulty walking and balance issues over the past 3 months.\n\n## Medical History\n- Type 2 Diabetes Mellitus (diagnosed 2015, A1C: 7.2%)\n- Hypertension (controlled with Lisinopril 10mg daily)\n- Peripheral neuropathy in both feet\n- Former smoker (quit 10 years ago)\n\n## Current Medications\n- Metformin 1000mg twice daily\n- Lisinopril 10mg daily\n- Gabapentin 300mg three times daily\n\n## Physical Examination\n- Height: 5'10\" | Weight: 185 lbs | BMI: 26.5\n- Blood pressure: 128/82 mmHg\n- Reduced sensation in bilateral feet (monofilament test positive)\n- Mild weakness in ankle dorsiflexion bilaterally\n\n## Gait Assessment\n- Stride Length: 0.58 m\n- Gait Speed: 0.92 m/s\n- Symmetry Index: 0.82\n- Wide-based gait observed\n- Uses walls for support when walking\n\n## Recent Falls\n- 1 fall in past 6 months (no injury)\n- Near-falls reported weekly\n\n## Patient Goals\nMaintain independence and continue daily walks in the neighborhood.",
+    "created_at": "2026-02-07T12:57:16.483393",
+    "updated_at": "2026-02-07T12:57:16.483393"
+  },
+  "PAT-90FA1DBF": {
+    "patient_id": "PAT-90FA1DBF",
+    "name": "Patient 1DBF",
+    "age": 0,
+    "gender": "Unknown",
+    "medical_history": "# Patient Clinical Record\n\n**Patient ID:** AUTO-GENERATED\n**Name:** James Morrison\n**Age:** 71\n**Gender:** Male\n\n## Chief Complaint\nTremor in right hand and slowness of movement noticed by wife over past year.\n\n## Medical History\n- Parkinson's Disease (diagnosed 6 months ago, Hoehn & Yahr Stage 2)\n- Benign prostatic hyperplasia\n- Depression (mild, treated)\n- No prior falls\n\n## Current Medications\n- Carbidopa/Levodopa 25/100mg three times daily\n- Tamsulosin 0.4mg daily\n- Sertraline 50mg daily\n\n## Physical Examination\n- Height: 5'11\" | Weight: 175 lbs | BMI: 24.4\n- Resting tremor right hand (4-6 Hz)\n- Cogwheel rigidity bilateral upper extremities\n- Masked facies\n- Reduced arm swing with walking\n\n## Gait Assessment\n- Stride Length: 0.52 m\n- Gait Speed: 0.78 m/s\n- Symmetry Index: 0.75\n- Festinating gait\n- Difficulty initiating movement\n- Freezing episodes reported (2-3 times weekly)\n\n## Recent Falls\n- No falls in past year\n- 2 near-falls during freezing episodes\n\n## Functional Status\n- Independent in ADLs with extra time\n- Still driving (restricted to daytime, familiar routes)\n- Retired engineer, cognitively intact\n\n## Treatment Goals\nMaintain mobility and prevent falls as disease progresses.",
+    "gait_data": {},
+    "chief_complaint": "",
+    "raw_text": "# Patient Clinical Record\n\n**Patient ID:** AUTO-GENERATED\n**Name:** James Morrison\n**Age:** 71\n**Gender:** Male\n\n## Chief Complaint\nTremor in right hand and slowness of movement noticed by wife over past year.\n\n## Medical History\n- Parkinson's Disease (diagnosed 6 months ago, Hoehn & Yahr Stage 2)\n- Benign prostatic hyperplasia\n- Depression (mild, treated)\n- No prior falls\n\n## Current Medications\n- Carbidopa/Levodopa 25/100mg three times daily\n- Tamsulosin 0.4mg daily\n- Sertraline 50mg daily\n\n## Physical Examination\n- Height: 5'11\" | Weight: 175 lbs | BMI: 24.4\n- Resting tremor right hand (4-6 Hz)\n- Cogwheel rigidity bilateral upper extremities\n- Masked facies\n- Reduced arm swing with walking\n\n## Gait Assessment\n- Stride Length: 0.52 m\n- Gait Speed: 0.78 m/s\n- Symmetry Index: 0.75\n- Festinating gait\n- Difficulty initiating movement\n- Freezing episodes reported (2-3 times weekly)\n\n## Recent Falls\n- No falls in past year\n- 2 near-falls during freezing episodes\n\n## Functional Status\n- Independent in ADLs with extra time\n- Still driving (restricted to daytime, familiar routes)\n- Retired engineer, cognitively intact\n\n## Treatment Goals\nMaintain mobility and prevent falls as disease progresses.",
+    "created_at": "2026-02-07T13:00:53.863308",
+    "updated_at": "2026-02-07T13:00:53.863308"
+  },
+  "PAT-C9F6F2C7": {
+    "patient_id": "PAT-C9F6F2C7",
+    "name": "Patient F2C7",
+    "age": 0,
+    "gender": "Unknown",
+    "medical_history": "# Patient Clinical Record\n\n**Patient ID:** AUTO-GENERATED\n**Name:** Sarah Thompson\n**Age:** 45\n**Gender:** Female\n\n## Chief Complaint\nDifficulty with balance and coordination following recovery from COVID-19.\n\n## Medical History\n- Post-COVID syndrome (long COVID, 8 months duration)\n- Hypothyroidism (well-controlled)\n- Anxiety disorder\n- No history of falls prior to COVID infection\n\n## Current Medications\n- Levothyroxine 75mcg daily\n- Escitalopram 10mg daily\n- Vitamin D 2000 IU daily\n\n## COVID-19 History\n- Infected March 2025, moderate severity (no hospitalization)\n- Persistent symptoms: fatigue, brain fog, dizziness, palpitations\n\n## Physical Examination\n- Height: 5'6\" | Weight: 145 lbs | BMI: 23.4\n- Orthostatic hypotension (BP drop 20 mmHg on standing)\n- Tandem gait impaired\n- Romberg test positive\n\n## Gait Assessment\n- Stride Length: 0.62 m\n- Gait Speed: 1.05 m/s\n- Symmetry Index: 0.88\n- Gait appears normal but patient reports fatigue after 100 meters\n- Difficulty with quick turns\n\n## Recent Falls\n- 2 falls in past 3 months (both when turning quickly)\n- No injuries\n\n## Work Status\nSoftware engineer, working from home. Unable to return to office due to fatigue.\n\n## Notes\nConsider vestibular rehabilitation and dysautonomia workup.",
+    "gait_data": {},
+    "chief_complaint": "",
+    "raw_text": "# Patient Clinical Record\n\n**Patient ID:** AUTO-GENERATED\n**Name:** Sarah Thompson\n**Age:** 45\n**Gender:** Female\n\n## Chief Complaint\nDifficulty with balance and coordination following recovery from COVID-19.\n\n## Medical History\n- Post-COVID syndrome (long COVID, 8 months duration)\n- Hypothyroidism (well-controlled)\n- Anxiety disorder\n- No history of falls prior to COVID infection\n\n## Current Medications\n- Levothyroxine 75mcg daily\n- Escitalopram 10mg daily\n- Vitamin D 2000 IU daily\n\n## COVID-19 History\n- Infected March 2025, moderate severity (no hospitalization)\n- Persistent symptoms: fatigue, brain fog, dizziness, palpitations\n\n## Physical Examination\n- Height: 5'6\" | Weight: 145 lbs | BMI: 23.4\n- Orthostatic hypotension (BP drop 20 mmHg on standing)\n- Tandem gait impaired\n- Romberg test positive\n\n## Gait Assessment\n- Stride Length: 0.62 m\n- Gait Speed: 1.05 m/s\n- Symmetry Index: 0.88\n- Gait appears normal but patient reports fatigue after 100 meters\n- Difficulty with quick turns\n\n## Recent Falls\n- 2 falls in past 3 months (both when turning quickly)\n- No injuries\n\n## Work Status\nSoftware engineer, working from home. Unable to return to office due to fatigue.\n\n## Notes\nConsider vestibular rehabilitation and dysautonomia workup.",
+    "created_at": "2026-02-07T13:01:08.079649",
+    "updated_at": "2026-02-07T13:01:08.079649"
+  },
+  "PAT-811DAF72": {
+    "patient_id": "PAT-811DAF72",
+    "name": "Patient AF72",
+    "age": 0,
+    "gender": "Unknown",
+    "medical_history": "# Patient Clinical Record\n\n**Patient ID:** AUTO-GENERATED\n**Name:** William Davis\n**Age:** 55\n**Gender:** Male\n\n## Chief Complaint\nPre-operative evaluation for elective knee replacement surgery.\n\n## Medical History\n- Severe osteoarthritis bilateral knees (right worse than left)\n- Obesity\n- Obstructive sleep apnea (on CPAP)\n- Hyperlipidemia\n- No cardiac history\n- No diabetes\n\n## Current Medications\n- Atorvastatin 20mg daily\n- Naproxen 500mg twice daily as needed\n- Glucosamine supplement\n\n## Surgical History\n- Appendectomy (age 22)\n- Right knee arthroscopy (2018)\n\n## Physical Examination\n- Height: 5'9\" | Weight: 245 lbs | BMI: 36.2\n- Bilateral knee crepitus\n- Right knee ROM: 5-95 degrees (limited)\n- Varus deformity right knee\n- No edema\n\n## Gait Assessment\n- Stride Length: 0.55 m\n- Gait Speed: 0.85 m/s\n- Symmetry Index: 0.72\n- Antalgic gait (right-sided limp)\n- Uses cane for distances >100 meters\n\n## Recent Falls\n- No falls in past year\n- Reports feeling stable despite knee pain\n\n## Pre-Operative Goals\nAssess fall risk for post-operative planning. Patient scheduled for right total knee arthroplasty in 4 weeks.\n\n## Notes\nLow baseline fall risk but will need fall prevention protocol post-surgery during rehabilitation phase.",
+    "gait_data": {},
+    "chief_complaint": "",
+    "raw_text": "# Patient Clinical Record\n\n**Patient ID:** AUTO-GENERATED\n**Name:** William Davis\n**Age:** 55\n**Gender:** Male\n\n## Chief Complaint\nPre-operative evaluation for elective knee replacement surgery.\n\n## Medical History\n- Severe osteoarthritis bilateral knees (right worse than left)\n- Obesity\n- Obstructive sleep apnea (on CPAP)\n- Hyperlipidemia\n- No cardiac history\n- No diabetes\n\n## Current Medications\n- Atorvastatin 20mg daily\n- Naproxen 500mg twice daily as needed\n- Glucosamine supplement\n\n## Surgical History\n- Appendectomy (age 22)\n- Right knee arthroscopy (2018)\n\n## Physical Examination\n- Height: 5'9\" | Weight: 245 lbs | BMI: 36.2\n- Bilateral knee crepitus\n- Right knee ROM: 5-95 degrees (limited)\n- Varus deformity right knee\n- No edema\n\n## Gait Assessment\n- Stride Length: 0.55 m\n- Gait Speed: 0.85 m/s\n- Symmetry Index: 0.72\n- Antalgic gait (right-sided limp)\n- Uses cane for distances >100 meters\n\n## Recent Falls\n- No falls in past year\n- Reports feeling stable despite knee pain\n\n## Pre-Operative Goals\nAssess fall risk for post-operative planning. Patient scheduled for right total knee arthroplasty in 4 weeks.\n\n## Notes\nLow baseline fall risk but will need fall prevention protocol post-surgery during rehabilitation phase.",
+    "created_at": "2026-02-07T13:05:47.411043",
+    "updated_at": "2026-02-07T13:05:47.411043"
+  }
+}
